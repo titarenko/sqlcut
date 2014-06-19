@@ -1,0 +1,25 @@
+{
+  "name": "mypg-tools",
+  "version": "0.1.0",
+  "description": "Tools for mypg lib.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/titarenko/mypg-tools.git"
+  },
+  "keywords": [
+    "mypg",
+    "postgresql",
+    "tools"
+  ],
+  "author": "Constantin Titarenko",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/titarenko/mypg-tools/issues"
+  },
+  "homepage": "https://github.com/titarenko/mypg-tools",
+  "dependencies": {
+    "lodash": "^2.4.1",
+    "mypg": "^0.1.0"
+  }
+}
