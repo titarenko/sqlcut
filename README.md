@@ -6,6 +6,13 @@ Tools for mypg lib.
 
 Methods require context (`this`) to have user property for audit reasons (convention of mypg).
 
+## lookup.build(tableName, columnName)
+
+Builds function `lookup(value)` which promises array of id-value objects.
+
+- `tableName` - name of table to look up
+- `columnName` - optional column name ('name' by default)
+
 ## findOrCreate.build(tableName, discriminantName)
 
 Builds function `findOrCreate(discriminantValue)` which promises extraction or creation of record which match discrimination condition.
