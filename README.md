@@ -33,7 +33,6 @@ Builds function `aggregate(query)` which does aggregation (grouping with further
 Options is object with following properties:
 
 * `tableName` - name of target table
-
 * `allowedGroupables` - optional, object where keys are columns that can participate in GROUP BY clause and values are additional fields that should be included in query
 
 ```js
