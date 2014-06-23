@@ -86,7 +86,7 @@ Builds `update(record)` function which promises update of `record`, which must h
 
 # DB Selection
 
-By default, module tries to use `mypg`, `mymysql`, 'mymssql' modules. If nothing has been found, stub is used (which also serves for API definition purpose). To override DB selection, do `require('sqlcut').db = yourDbApi;`.
+By default, module tries to use `mypg`, `mymysql` or `mymssql` modules. If nothing has been found, stub is used (which also serves for API definition purpose). To override DB selection, do `require('sqlcut').db = yourDbApi;`.
 
 # License
 
