@@ -1,13 +1,20 @@
-var lookup = require('./lib/lookup');
-var findOrCreate = require('./lib/find-or-create');
-var update = require('./lib/update');
-var associate = require('./lib/associate');
-var aggregate = require('./lib/aggregate');
+var db = require('./lib/db');
 
-module.exports = {
-	lookup: lookup,
-	findOrCreate: findOrCreate,
-	update: update,
-	associate: associate,
-	aggregate: aggregate
-};
+function Api () {
+	this.aggregate = require('./lib/aggregate');
+	this.associate = require('./lib/associate');
+	this.create = require('./lib/create');
+	this.findOrCreate = require('./lib/find-or-create');
+	this.lookup = require('./lib/lookup');
+	this.remove = require('./lib/remove');
+	this.update = require('./lib/update');
+
+	this.__defineSetter__('db', function (api) {
+		db.api = api;
+	});
+	this.__defineGetter__('db', function () {
+		return db.api;
+	});
+}
+
+module.exports = new Api();
