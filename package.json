@@ -1,25 +1,25 @@
 {
-  "name": "mypg-tools",
+  "name": "sqlcut",
   "version": "0.1.0",
-  "description": "Tools for mypg lib.",
+  "description": "SQL shortcuts for my* (mypg, mymysql, mymssql) series of node modules.",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/titarenko/mypg-tools.git"
+    "url": "git://github.com/titarenko/sqlcut.git"
   },
   "keywords": [
-    "mypg",
-    "postgresql",
-    "tools"
+    "sql",
+    "shortcut",
+    "builder"
   ],
   "author": "Constantin Titarenko",
   "license": "BSD",
   "bugs": {
-    "url": "https://github.com/titarenko/mypg-tools/issues"
+    "url": "https://github.com/titarenko/sqlcut/issues"
   },
-  "homepage": "https://github.com/titarenko/mypg-tools",
+  "homepage": "https://github.com/titarenko/sqlcut",
   "dependencies": {
     "lodash": "^2.4.1",
-    "mypg": "^0.1.0"
+    "q": "^1.0.1"
   }
 }

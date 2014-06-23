@@ -1,37 +1,10 @@
-# mypg-tools
+# sqlcut
 
-Tools for mypg lib.
+SQL shortcuts for my* (mypg, mymysql, mymssql) series of node modules.
 
 # API
 
-Methods require context (`this`) to have user property for audit reasons (convention of mypg).
-
-## lookup.build(tableName, columnName)
-
-Builds function `lookup(value)` which promises array of id-value objects.
-
-- `tableName` - name of table to look up
-- `columnName` - optional column name ('name' by default)
-
-## findOrCreate.build(tableName, discriminantName)
-
-Builds function `findOrCreate(discriminantValue)` which promises extraction or creation of record which match discrimination condition.
-
-```js
-var findOrCreate = tools.findOrCreate.build('products', 'name');
-findOrCreate('milk').then(console.log);
-```
-
-## associate.build(tableName, masterColumnName, slaveColumnName);
-
-Builds function `associate(masterValue, slaveValuesArray)` which does association (many to many) of certain record with given children.
-
-```js
-var associate = tools.associate.build('ad_photos', 'ad_id', 'photo_id');
-associate(12, [55, 12, 32]).then(function () {
-	console.log('12th ad was associated with 55th, 12th and 32d photos.');
-});
-```
+Note: to enable audit, call methods with context containing `user` object (with `id` property).
 
 ## aggregate.build(options)
 
@@ -71,6 +44,49 @@ Query is object with following properties:
 ```
 {"groups":["salesman"],"date_range":{"start":"2014-06-23T00:00:00.000Z","end":"2014-06-29T23:59:59.999Z"},"filters":{"salesman_id":["14"]}}
 ```
+
+## associate.build(tableName, masterColumnName, slaveColumnName);
+
+Builds function `associate(masterValue, slaveValuesArray)` which does association (many to many) of certain record with given children.
+
+```js
+var associate = tools.associate.build('ad_photos', 'ad_id', 'photo_id');
+associate(12, [55, 12, 32]).then(function () {
+	console.log('12th ad was associated with 55th, 12th and 32d photos.');
+});
+```
+
+## create.build(tableName, columns)
+
+Builds `create(row)` function which promises id of record which will be created. `Columns` argument defines list of allowed column names, can be omitted to skip such filtering.
+
+## findOrCreate.build(tableName, discriminantName)
+
+Builds function `findOrCreate(discriminantValue)` which promises extraction or creation of record which match discrimination condition.
+
+```js
+var findOrCreate = tools.findOrCreate.build('products', 'name');
+findOrCreate('milk').then(console.log);
+```
+
+## lookup.build(tableName, columnName)
+
+Builds function `lookup(value)` which promises array of id-value objects.
+
+- `tableName` - name of table to look up
+- `columnName` - optional column name ('name' by default)
+
+## remove.build(tableName)
+
+Builds function `remove(id)` which promises record deletion by `id`.
+
+## update.build(tableName, columns)
+
+Builds `update(record)` function which promises update of `record`, which must have `id` property among updated ones. `Columns` argument defines list of allowed column names, can be omitted to skip such filtering.
+
+# DB Selection
+
+By default, module tries to use `mypg`, `mymysql`, 'mymssql' modules. If nothing has been found, stub is used (which also serves for API definition purpose). To override DB selection, do `require('sqlcut').db = yourDbApi;`.
 
 # License
 
