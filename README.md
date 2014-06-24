@@ -153,10 +153,6 @@ Builds function `remove(id)` which promises record deletion by `id`.
 
 Builds `update(record)` function which promises update of `record`, which must have `id` property among updated ones. `Columns` argument defines list of allowed column names, can be omitted to skip such filtering.
 
-# DB Selection
-
-By default, module tries to use `mypg`, `mymysql` or `mymssql` modules. If nothing has been found, stub is used (which also serves for API definition purpose). To override DB selection, do `require('sqlcut').db = yourDbApi;`.
-
 # License
 
 BSD
