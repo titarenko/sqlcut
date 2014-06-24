@@ -41,7 +41,7 @@ Promises query result. If `param1` is an array, its elements will be treated as 
 ```js
 db.query('select * from products where name = $1', ['beer']).then(console.log);
 ```
-## querySingle(sql, paramsArray)
+## querySingle(sql, param1, param2, ...)
 
 Promises first row of results.
 
@@ -74,6 +74,8 @@ db.remove('products', 20).then(function () {
 ## find(tableName, id)
 
 Promises record with given identifier taken from specified table.
+
+# Extra API
 
 ## aggregate.build(options)
 
