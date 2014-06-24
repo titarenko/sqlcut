@@ -1,10 +1,79 @@
 # sqlcut
 
-SQL shortcuts for my* (mypg, mymysql, mymssql) series of node modules.
+SQL shortcuts.
+
+# Construction
+
+```js
+var sqlcut = require('sqlcut');
+var db = sqlcut('sqlcut-pg');
+
+db.query(
+	'select * from users where email = ? and is_active = ?',
+	'bobo@example.com',
+	true
+).then(console.log);
+```
+
+Note that API construction method takes DB adapter module name.
+At the moment options are:
+
+* sqlcut-pg
+* sqlcut-mysql
+* sqlcut-mssql
+
+You can implement your own module,
+the only requirement for it is to have `query(sql, paramsArray)` method
+which returns promise with query results (special case is insert query, it must return `id` of inserted record).
 
 # API
 
 Note: to enable audit, call methods with context containing `user` object (with `id` property).
+
+## context.system
+
+Predefined context for calling methods on behalf of system.
+
+## query(sql, param1, param2, ...)
+
+Promises query result. If `param1` is an array, its elements will be treated as params.
+
+```js
+db.query('select * from products where name = $1', ['beer']).then(console.log);
+```
+## querySingle(sql, paramsArray)
+
+Promises first row of results.
+
+## insert(tableName, record)
+
+Promises identifier of record that is being inserted.
+
+```js
+db.insert('products', { name: 'beer' }).then(console.log);
+```
+
+## update(tableName, record)
+
+Promises identifier of record that is being updated. Record must have identifier value.
+
+```js
+db.update('products', { id: 20, name: 'fish' }).then(console.log);
+```
+
+## remove(tableName, id)
+
+Promises removal of record with given identifier from specified table.
+
+```js
+db.remove('products', 20).then(function () {
+	console.log('Product 20 was removed');
+});
+```
+
+## find(tableName, id)
+
+Promises record with given identifier taken from specified table.
 
 ## aggregate.build(options)
 

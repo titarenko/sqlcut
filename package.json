@@ -1,7 +1,7 @@
 {
   "name": "sqlcut",
-  "version": "0.1.0",
-  "description": "SQL shortcuts for my* (mypg, mymysql, mymssql) series of node modules.",
+  "version": "0.2.0",
+  "description": "SQL shortcuts.",
   "main": "index.js",
   "repository": {
     "type": "git",

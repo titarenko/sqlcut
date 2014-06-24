@@ -1,20 +1,27 @@
-var db = require('./lib/db');
+var adapter = require('./lib/db');
 
-function Api () {
-	this.aggregate = require('./lib/aggregate');
-	this.associate = require('./lib/associate');
-	this.create = require('./lib/create');
-	this.findOrCreate = require('./lib/find-or-create');
-	this.lookup = require('./lib/lookup');
-	this.remove = require('./lib/remove');
-	this.update = require('./lib/update');
-
-	this.__defineSetter__('db', function (api) {
-		db.api = api;
-	});
-	this.__defineGetter__('db', function () {
-		return db.api;
-	});
+function feature (adapter, name) {
+	return {
+		build: require('./lib/' + name)(adapter)
+	};
 }
 
-module.exports = new Api();
+module.exports = function (databaseModuleName, systemUser) {
+	var db = adapter(databaseModuleName);
+	return _.extend(db, {
+		aggregate: feature(db, 'aggregate'),
+		associate: feature(db, 'associate'),
+		create: feature(db, 'create'),
+		findOrCreate: feature(db, 'find-or-create'),
+		lookup: feature(db, 'lookup'),
+		remove: feature(db, 'remove'),
+		update: feature(db, 'update'),
+		context: {
+			system: {
+				user: systemUser || {
+					id: 1
+				}
+			}
+		}
+	});
+};
