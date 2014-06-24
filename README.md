@@ -6,7 +6,7 @@ SQL shortcuts.
 
 ```js
 var sqlcut = require('sqlcut');
-var db = sqlcut('sqlcut-pg');
+var db = sqlcut('sqlcut-pg', 'postgres://user:password@server/db');
 
 db.query(
 	'select * from users where email = ? and is_active = ?',
