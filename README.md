@@ -28,7 +28,10 @@ which returns promise with query results (special case is insert query, it must 
 
 # API
 
-Note: to enable audit, call methods with context containing `user` object (with `id` property).
+Notes: 
+
+* "promises" means "returns promise"
+* to enable audit, call methods with context containing `user` object (with `id` property)
 
 ## context.system
 
