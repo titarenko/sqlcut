@@ -18,9 +18,9 @@ db.query(
 Note that API construction method takes DB adapter module name.
 At the moment options are:
 
-* sqlcut-pg
-* sqlcut-mysql
-* sqlcut-mssql
+* [sqlcut-pg](https://github.com/titarenko/sqlcut-pg)
+* [sqlcut-mysql](https://github.com/titarenko/sqlcut-mysql)
+* [sqlcut-mssql](https://github.com/titarenko/sqlcut-mssql)
 
 You can implement your own module,
 the only requirement for it is to have `query(sql, paramsArray)` method
