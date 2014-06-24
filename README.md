@@ -115,8 +115,17 @@ Query is object with following properties:
 * `groups` - array of column names
 * `filters` - object: key is column name, value is array of allowed values
 
-```
-{"groups":["salesman"],"date_range":{"start":"2014-06-23T00:00:00.000Z","end":"2014-06-29T23:59:59.999Z"},"filters":{"salesman_id":["14"]}}
+```js
+{
+	"groups": ["salesman"],
+	"date_range": {
+		"start": "2014-06-23T00:00:00.000Z",
+		"end": "2014-06-29T23:59:59.999Z"
+	},
+	"filters": {
+		"salesman_id": ["14"]
+	}
+}
 ```
 
 ## associate.build(tableName, masterColumnName, slaveColumnName);
