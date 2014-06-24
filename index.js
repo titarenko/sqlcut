@@ -6,8 +6,8 @@ function feature (adapter, name) {
 	};
 }
 
-module.exports = function (databaseModuleName, systemUser) {
-	var db = adapter(databaseModuleName);
+module.exports = function (databaseModuleName, connectionParameters, systemUser) {
+	var db = adapter(databaseModuleName, connectionParameters);
 	return _.extend(db, {
 		aggregate: feature(db, 'aggregate'),
 		associate: feature(db, 'associate'),
