@@ -1,4 +1,3 @@
-var _ = require('lodash');
 var adapter = require('./lib/db');
 
 function feature (adapter, name) {
@@ -9,20 +8,24 @@ function feature (adapter, name) {
 
 module.exports = function (databaseModuleName, connectionParameters, systemUser) {
 	var db = adapter(databaseModuleName, connectionParameters);
-	return _.extend(db, {
+	
+	db.context = {
+		system: {
+			user: systemUser || {
+				id: 1
+			}
+		}
+	};
+	
+	db.tools = {
 		aggregate: feature(db, 'aggregate'),
 		associate: feature(db, 'associate'),
 		create: feature(db, 'create'),
 		findOrCreate: feature(db, 'find-or-create'),
 		lookup: feature(db, 'lookup'),
 		remove: feature(db, 'remove'),
-		update: feature(db, 'update'),
-		context: {
-			system: {
-				user: systemUser || {
-					id: 1
-				}
-			}
-		}
-	});
+		update: feature(db, 'update')
+	};
+
+	return db;
 };

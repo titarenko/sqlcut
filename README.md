@@ -80,7 +80,7 @@ Promises record with given identifier taken from specified table.
 
 # Extra API
 
-## aggregate.build(options)
+## tools.aggregate.build(options)
 
 Builds function `aggregate(query)` which does aggregation (grouping with further processing) with filtering option.
 
@@ -128,7 +128,7 @@ Query is object with following properties:
 }
 ```
 
-## associate.build(tableName, masterColumnName, slaveColumnName);
+## tools.associate.build(tableName, masterColumnName, slaveColumnName);
 
 Builds function `associate(masterValue, slaveValuesArray)` which does association (many to many) of certain record with given children.
 
@@ -139,11 +139,11 @@ associate(12, [55, 12, 32]).then(function () {
 });
 ```
 
-## create.build(tableName, columns)
+## tools.create.build(tableName, columns)
 
 Builds `create(row)` function which promises id of record which will be created. `Columns` argument defines list of allowed column names, can be omitted to skip such filtering.
 
-## findOrCreate.build(tableName, discriminantName)
+## tools.findOrCreate.build(tableName, discriminantName)
 
 Builds function `findOrCreate(discriminantValue)` which promises extraction or creation of record which match discrimination condition.
 
@@ -152,18 +152,18 @@ var findOrCreate = tools.findOrCreate.build('products', 'name');
 findOrCreate('milk').then(console.log);
 ```
 
-## lookup.build(tableName, columnName)
+## tools.lookup.build(tableName, columnName)
 
 Builds function `lookup(value)` which promises array of id-value objects.
 
 - `tableName` - name of table to look up
 - `columnName` - optional column name ('name' by default)
 
-## remove.build(tableName)
+## tools.remove.build(tableName)
 
 Builds function `remove(id)` which promises record deletion by `id`.
 
-## update.build(tableName, columns)
+## tools.update.build(tableName, columns)
 
 Builds `update(record)` function which promises update of `record`, which must have `id` property among updated ones. `Columns` argument defines list of allowed column names, can be omitted to skip such filtering.
 
