@@ -1,3 +1,4 @@
+var _ = require('lodash');
 var adapter = require('./lib/db');
 
 function feature (adapter, name) {
