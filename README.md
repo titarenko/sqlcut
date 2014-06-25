@@ -145,7 +145,7 @@ Builds `create(row)` function which promises id of record which will be created.
 
 ## tools.findOrCreate.build(tableName, discriminantName)
 
-Builds function `findOrCreate(discriminantValue)` which promises extraction or creation of record which match discrimination condition.
+Builds function `findOrCreate(discriminantValue, newObject)` which promises extraction or creation of record which match discrimination condition. Note that `newObject` optional parameter is used for providing more properties for "create" part of function.
 
 ```js
 var findOrCreate = tools.findOrCreate.build('products', 'name');
