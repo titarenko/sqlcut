@@ -42,7 +42,7 @@ Predefined context for calling methods on behalf of system.
 Promises query result. If `param1` is an array, its elements will be treated as params.
 
 ```js
-db.query('select * from products where name = $1', ['beer']).then(console.log);
+db.query('select * from products where name = ?', ['beer']).then(console.log);
 ```
 ## querySingle(sql, param1, param2, ...)
 
