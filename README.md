@@ -143,9 +143,9 @@ associate(12, [55, 12, 32]).then(function () {
 
 Builds `create(row)` function which promises id of record which will be created. `Columns` argument defines list of allowed column names, can be omitted to skip such filtering.
 
-## tools.findOrCreate.build(tableName, discriminantName)
+## tools.findOrCreate.build(tableName, discriminantName1, discriminantName2, ...)
 
-Builds function `findOrCreate(discriminantValue, newObject)` which promises extraction or creation of record which match discrimination condition. Note that `newObject` optional parameter is used for providing more properties for "create" part of function.
+Builds function `findOrCreate(discriminantValue1, discriminantValue2, ..., newObject)` which promises extraction or creation of record which match discrimination condition. Note that `newObject` optional parameter is used for providing more properties for "create" part of function.
 
 ```js
 var findOrCreate = tools.findOrCreate.build('products', 'name');
