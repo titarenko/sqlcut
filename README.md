@@ -167,6 +167,15 @@ Builds function `remove(id)` which promises record deletion by `id`.
 
 Builds `update(record)` function which promises update of `record`, which must have `id` property among updated ones. `Columns` argument defines list of allowed column names, can be omitted to skip such filtering.
 
+## tools.createOrUpdate.build(tableName)
+
+Builds function `createOrUpdate(record)` which promises creation (if record doesn't have `id` property) or update of corresponding record in DB.
+
+```js
+var createOrUpdate = tools.createOrUpdate.build('products');
+createOrUpdate({ name: 'milk' }).then(console.log);
+```
+
 # License
 
 BSD
