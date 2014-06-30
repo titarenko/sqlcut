@@ -176,6 +176,15 @@ var createOrUpdate = tools.createOrUpdate.build('products');
 createOrUpdate({ name: 'milk' }).then(console.log);
 ```
 
+## tools.find.build(tableName, discriminantName1, discriminantName2, ...)
+
+Builds function `find(discriminantValue1, discriminantValue2, ...)` which promises record with satisfies discrimination condition.
+
+```js
+var find = tools.find.build('products', 'name');
+find('milk').then(console.log);
+```
+
 # License
 
 BSD

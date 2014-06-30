@@ -21,6 +21,7 @@ module.exports = function (databaseModuleName, connectionParameters, systemUser)
 		aggregate: feature(db, 'aggregate'),
 		associate: feature(db, 'associate'),
 		create: feature(db, 'create'),
+		find: feature(db, 'find'),
 		findOrCreate: feature(db, 'find-or-create'),
 		createOrUpdate: feature(db, 'create-or-update'),
 		lookup: feature(db, 'lookup'),
