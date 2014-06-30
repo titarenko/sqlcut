@@ -185,6 +185,13 @@ var find = tools.find.build('products', 'name');
 find('milk').then(console.log);
 ```
 
+If no discriminant name was passed, then `id` will be used.
+
+```js
+var find = tools.find.build('products');
+find(10).then(console.log);
+```
+
 # License
 
 BSD
