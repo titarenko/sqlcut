@@ -29,5 +29,16 @@ module.exports = function (databaseModuleName, connectionParameters, systemUser)
 		update: feature(db, 'update')
 	};
 
+	db.placeholders = function (rows) {
+		return {
+			ids: rows.map(function (it) {
+				return it.id;
+			}),
+			text: rows.map(function () {
+				return '?';
+			}).join(', ')
+		};
+	};
+
 	return db;
 };
