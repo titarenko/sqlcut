@@ -192,6 +192,24 @@ var find = tools.find.build('products');
 find(10).then(console.log);
 ```
 
+## tools.createIfNotExists.build(tableName, columns)
+
+Builds function `createIfNotExists(row)` which promises creation of record in case if it doesn't exist (no record with same `id`).
+
+```js
+var createIfNotExists = tools.createIfNotExists.build('products', ['id', 'name']);
+createIfNotExists({id: 1, name: 'milk'});
+```
+
+## tools.upsert.build(tableName, columns)
+
+Builds function `upsert(row)` which promises udpate of record if it exists or its creation if no such record can be found in table (by `id`).
+
+```js
+var upsert = tools.upsert.build('products', ['id', 'name']);
+upsert({id: 1, name: 'milk 2'});
+```
+
 # License
 
 BSD

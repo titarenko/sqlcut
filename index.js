@@ -26,7 +26,9 @@ module.exports = function (databaseModuleName, connectionParameters, systemUser)
 		createOrUpdate: feature(db, 'create-or-update'),
 		lookup: feature(db, 'lookup'),
 		remove: feature(db, 'remove'),
-		update: feature(db, 'update')
+		update: feature(db, 'update'),
+		createIfNotExists: feature(db, 'create-if-not-exists'),
+		upsert: feature(db, 'upsert')
 	};
 
 	db.placeholders = function (rows) {
