@@ -1,6 +1,6 @@
 {
   "name": "sqlcut",
-  "version": "0.2.25",
+  "version": "0.2.26",
   "description": "SQL shortcuts.",
   "main": "index.js",
   "repository": {
